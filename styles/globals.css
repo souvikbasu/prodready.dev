@@ -17,6 +17,23 @@ a {
 * {
   box-sizing: border-box;
   font-family: "Inter";
+  @apply text-white;
+}
+
+h2 {
+  @apply my-4 leading-5 text-2xl;
+}
+
+h4 {
+  @apply leading-5 text-sm;
+}
+
+input {
+  @apply w-60 rounded h-10;
+}
+
+button {
+  @apply h-10 bg-buttonbg rounded text-white px-4;
 }
 
 @font-face {

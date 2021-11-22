@@ -18,12 +18,13 @@ module.exports = {
       colors: {
         darkbg: "#100D12",
         graytext: "#84878E",
+        graybg: "#282722",
         yellow: "#FFEC62",
         link: "#1D4E86",
         darkblue: "#1D4E86",
-        graybg: "#E5E5E5",
         lightgray: "#FCFCFC",
         success: "#27AE60",
+        buttonbg: "#8344ff",
       },
       screens: {
         "3xl": "2200px",

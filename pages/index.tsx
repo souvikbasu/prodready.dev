@@ -3,6 +3,21 @@ import Head from "next/head";
 import Image from "next/image";
 import RegisterEmail from "../components/RegisterEmail";
 import styles from "../styles/Home.module.css";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  HttpLink,
+  from,
+} from "@apollo/client";
+import { onError } from "@apollo/client/link/error";
+
+const link = from([new HttpLink({ uri: "http://localhost:4000/graphql" })]);
+
+const client = new ApolloClient({
+  cache: new InMemoryCache(),
+  link: link,
+});
 
 const Home: NextPage = () => {
   return (
@@ -23,8 +38,9 @@ const Home: NextPage = () => {
           </h1>
 
           <h2>Take your React skills to the next level</h2>
-
-          <RegisterEmail />
+          <ApolloProvider client={client}>
+            <RegisterEmail />
+          </ApolloProvider>
         </main>
 
         <footer className={styles.footer}>

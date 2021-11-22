@@ -6,7 +6,7 @@ const RegisterEmail = () => {
       <h2>Save my spot</h2>
       <h4>No payment needed as of now. Pay only once you confirm</h4>
       <div className="flex flex-row mt-4">
-        <input placeholder="Email" className=""></input>
+        <input placeholder="Email" className="pl-6"></input>
         <button className="ml-2">Enroll</button>
       </div>
     </div>

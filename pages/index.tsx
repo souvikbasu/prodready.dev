@@ -6,8 +6,8 @@ import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
   return (
-    <div className="bg-darkbg">
-      <div className={styles.container}>
+    <div className="bg-darkbg h-auto w-max sm:w-full ">
+      <div className="p-4">
         <Head>
           <title>React in Production</title>
           <meta

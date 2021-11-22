@@ -113,4 +113,8 @@
     width: 100%;
     flex-direction: column;
   }
+  .footer {
+    max-height: 30vmax;
+    margin-top: 400px;
+  }
 }

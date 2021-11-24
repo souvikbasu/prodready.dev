@@ -8,16 +8,14 @@ import {
   InMemoryCache,
   ApolloProvider,
   HttpLink,
-  from,
 } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
 
-const link = from([new HttpLink({ uri: "http://localhost:4000/graphql" })]);
-
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link: link,
+  link: new HttpLink({ uri: "http://localhost:4000/graphql" }),
 });
+console.log(process.env.DB_URI);
 
 const Home: NextPage = () => {
   return (
@@ -32,7 +30,7 @@ const Home: NextPage = () => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <main className={styles.main}>
+        <main className="min-h-screen p-4 flex flex-col justify-center items-center">
           <h1 className="font-black text-white text-5xl center text-yellow">
             React in Production
           </h1>
@@ -43,7 +41,7 @@ const Home: NextPage = () => {
           </ApolloProvider>
         </main>
 
-        <footer className={styles.footer}>
+        <footer className="mt-96 sm:mt-0 max-h-screen flex p-4 border-t-2 border-gray-100 justify-center items-center">
           <div className="text-sm text-graytext">
             © 2021 Souvik Basu. All Rights Reserved.
           </div>

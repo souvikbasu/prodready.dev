@@ -13,8 +13,10 @@ const SAVE_USER_SPOT = gql`
 function RegisterEmail(): JSX.Element {
   const [saveUserSpot, { error }] = useMutation(SAVE_USER_SPOT);
   const [message, setMessage] = useState("");
-  const [messageError, setMessageError] = useState("");
   const [emailInput, setEmailInput] = useState("");
+  const [values, setValues] = useState({
+    email: "",
+  });
 
   const { handleSubmit, register, errors } = useForm();
 
@@ -28,9 +30,12 @@ function RegisterEmail(): JSX.Element {
   const onSubmit = async () => {
     try {
       const data = await saveUserSpot();
-      if (data === null) {
+      if (values.email === null) {
         throw new Error("Request could not be completed.");
       }
+      setValues({
+        email: "",
+      });
     } catch (err) {
       setMessage("Email already exist!");
     }

@@ -548,6 +548,18 @@
   "resolved" "https://registry.npmjs.org/@rushstack/eslint-patch/-/eslint-patch-1.1.0.tgz"
   "version" "1.1.0"
 
+"@stripe/react-stripe-js@^1.6.0":
+  "integrity" "sha512-tMmsPD+wkpiiVJZgQ1E06tklG5MZHG462s6OWja9abpxq76kerAxMFN+KdhUg0LIEY79THbzvH3s/WGHasnV3w=="
+  "resolved" "https://registry.npmjs.org/@stripe/react-stripe-js/-/react-stripe-js-1.6.0.tgz"
+  "version" "1.6.0"
+  dependencies:
+    "prop-types" "^15.7.2"
+
+"@stripe/stripe-js@^1.19.1", "@stripe/stripe-js@^1.21.1":
+  "integrity" "sha512-/HhRol0Bia/6L7JstXUOpg3m0U3nBW8c2tvaBE6QdonN+OMusYT9AIqCMR/PyzoF3ROifFJ2kbWT7xQjbKN3tw=="
+  "resolved" "https://registry.npmjs.org/@stripe/stripe-js/-/stripe-js-1.21.1.tgz"
+  "version" "1.21.1"
+
 "@tailwindcss/aspect-ratio@^0.3.0":
   "integrity" "sha512-DMgWskNJR6FNPLbQ8Xoq/PKV/9DfNKh5dvKB+SM8x7lVl4+pnxlZ3Ns4+yGmurA/ze708HrnCG1tXk85HolJmw=="
   "resolved" "https://registry.npmjs.org/@tailwindcss/aspect-ratio/-/aspect-ratio-0.3.0.tgz"
@@ -575,7 +587,7 @@
   "resolved" "https://registry.npmjs.org/@types/json5/-/json5-0.0.29.tgz"
   "version" "0.0.29"
 
-"@types/node@*", "@types/node@16.11.9":
+"@types/node@*", "@types/node@>=8.1.0", "@types/node@16.11.9":
   "integrity" "sha512-MKmdASMf3LtPzwLyRrFjtFFZ48cMf8jmX5VRYrDQiJa8Ybu5VAmkqBWqKU8fdCwD8ysw4mQ9nrEHvzg6gunR7A=="
   "resolved" "https://registry.npmjs.org/@types/node/-/node-16.11.9.tgz"
   "version" "16.11.9"
@@ -2988,7 +3000,7 @@
   "resolved" "https://registry.npmjs.org/negotiator/-/negotiator-0.6.2.tgz"
   "version" "0.6.2"
 
-"next@12.0.4":
+"next@^12.0.4":
   "integrity" "sha512-1pvjcSZBm5OLoGmDhp4JwKwIE798WbqUNLuyU7w6a2jUkdWaxOYtkE/ROXQTi2pXHj7+6rm68AvhxROLX2NHQg=="
   "resolved" "https://registry.npmjs.org/next/-/next-12.0.4.tgz"
   "version" "12.0.4"
@@ -3454,7 +3466,7 @@
   "resolved" "https://registry.npmjs.org/progress/-/progress-2.0.3.tgz"
   "version" "2.0.3"
 
-"prop-types@^15.7.2":
+"prop-types@^15.7.2", "prop-types@15.7.2":
   "integrity" "sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ=="
   "resolved" "https://registry.npmjs.org/prop-types/-/prop-types-15.7.2.tgz"
   "version" "15.7.2"
@@ -3498,7 +3510,7 @@
     "postcss" "^8.2.1"
     "postcss-selector-parser" "^6.0.2"
 
-"qs@6.7.0":
+"qs@^6.6.0", "qs@6.7.0":
   "integrity" "sha512-VCdBRNFTX1fyE7Nb6FYoURo/SPe62QCaAyzJvUjwRaIsc+NePBEniHlvxFmmX56+HZphIGtV0XeCirBtpDrTyQ=="
   "resolved" "https://registry.npmjs.org/qs/-/qs-6.7.0.tgz"
   "version" "6.7.0"
@@ -3565,7 +3577,7 @@
     "iconv-lite" "0.4.24"
     "unpipe" "1.0.0"
 
-"react-dom@17.0.2":
+"react-dom@^15.5.4 || ^16.0.0-0", "react-dom@^16.8.0 || ^17.0.0", "react-dom@17.0.2":
   "integrity" "sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-17.0.2.tgz"
   "version" "17.0.2"
@@ -3599,7 +3611,19 @@
   "resolved" "https://registry.npmjs.org/react-refresh/-/react-refresh-0.8.3.tgz"
   "version" "0.8.3"
 
-"react@^16.8.0 || ^17", "react@^16.8.0 || ^17.0.0", "react@>=16.8.0", "react@17.0.2":
+"react-stripe-checkout@^2.6.3":
+  "integrity" "sha1-MXOocLBOWjwyGgbSTNU8YDARHEU="
+  "resolved" "https://registry.npmjs.org/react-stripe-checkout/-/react-stripe-checkout-2.6.3.tgz"
+  "version" "2.6.3"
+
+"react-stripe-elements@^6.1.2":
+  "integrity" "sha512-gYbYhVVJm3Woc84TgmuiqUj44rI/BZGUVUTTmS0U6kZyZa5fYMPlKKIsVZdQZufQ7Ab4BXLO2LSxBlGY0s2jew=="
+  "resolved" "https://registry.npmjs.org/react-stripe-elements/-/react-stripe-elements-6.1.2.tgz"
+  "version" "6.1.2"
+  dependencies:
+    "prop-types" "15.7.2"
+
+"react@^15.5.4 || ^16.0.0-0", "react@^16.8.0 || ^17", "react@^16.8.0 || ^17.0.0", "react@>=16.8.0", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"
@@ -4011,6 +4035,14 @@
   "integrity" "sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig=="
   "resolved" "https://registry.npmjs.org/strip-json-comments/-/strip-json-comments-3.1.1.tgz"
   "version" "3.1.1"
+
+"stripe@^8.191.0":
+  "integrity" "sha512-3oyuIbuW3WDsbGnMUtIZPkr+sOUJ3NEtEwghd81ZuWc+Tq09MrgWXGekbVnbxA3TMFwfKOILw6QoiPA7za4JUg=="
+  "resolved" "https://registry.npmjs.org/stripe/-/stripe-8.191.0.tgz"
+  "version" "8.191.0"
+  dependencies:
+    "@types/node" ">=8.1.0"
+    "qs" "^6.6.0"
 
 "styled-jsx@5.0.0-beta.3":
   "integrity" "sha512-HtDDGSFPvmjHIqWf9n8Oo54tAoY/DTplvlyOH2+YOtD80Sp31Ap8ffSmxhgk5EkUoJ7xepdXMGT650mSffWuRA=="

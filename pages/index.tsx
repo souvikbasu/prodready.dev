@@ -10,12 +10,7 @@ import {
   HttpLink,
 } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
-
-const client = new ApolloClient({
-  cache: new InMemoryCache(),
-  link: new HttpLink({ uri: "http://localhost:4000/graphql" }),
-});
-console.log(process.env.DB_URI);
+import GetApolloClient from "../apis/apollo.client";
 
 const Home: NextPage = () => {
   return (
@@ -36,7 +31,7 @@ const Home: NextPage = () => {
           </h1>
 
           <h2>Take your React skills to the next level</h2>
-          <ApolloProvider client={client}>
+          <ApolloProvider client={GetApolloClient()}>
             <RegisterEmail />
           </ApolloProvider>
         </main>

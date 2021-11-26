@@ -1,16 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import RegisterEmail from "../components/RegisterEmail";
-import styles from "../styles/Home.module.css";
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  HttpLink,
-} from "@apollo/client";
-import { onError } from "@apollo/client/link/error";
-import GetApolloClient from "../apis/apollo.client";
 
 const Home: NextPage = () => {
   return (
@@ -31,9 +21,7 @@ const Home: NextPage = () => {
           </h1>
 
           <h2>Take your React skills to the next level</h2>
-          <ApolloProvider client={GetApolloClient()}>
-            <RegisterEmail />
-          </ApolloProvider>
+          <RegisterEmail />
         </main>
 
         <footer className="mt-96 sm:mt-0 max-h-screen flex p-4 border-t-2 border-gray-100 justify-center items-center">

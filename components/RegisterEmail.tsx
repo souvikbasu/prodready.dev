@@ -11,36 +11,23 @@ const SAVE_USER_SPOT = gql`
 `;
 
 function RegisterEmail(): JSX.Element {
-  const [saveUserSpot, { error }] = useMutation(SAVE_USER_SPOT);
+  const [saveUserSpot, { error }] = useMutation(SAVE_USER_SPOT, {
+    errorPolicy: "all",
+  });
   const [message, setMessage] = useState("");
   const [emailInput, setEmailInput] = useState("");
-  const [values, setValues] = useState({
-    email: "",
-  });
+  const [values, setValues] = useState("");
 
   const { handleSubmit, register, errors } = useForm();
 
-  const submit = (data: any) => {
+  const submit = ({ data, e }: any) => {
     saveUserSpot({ variables: { email: emailInput } });
     setMessage(
       "Congratulations! you have been enrolled into the workshop. I will send you further details as the dates near."
     );
+    setValues("");
   };
 
-  const onSubmit = async () => {
-    try {
-      const data = await saveUserSpot();
-      if (values.email === null) {
-        throw new Error("Request could not be completed.");
-      }
-      setValues({
-        email: "",
-      });
-    } catch (err) {
-      setMessage("Email already exist!");
-    }
-  };
-  if (error) return <div>Error! ${error.message}</div>;
   return (
     <>
       <form
@@ -63,14 +50,15 @@ function RegisterEmail(): JSX.Element {
             })}
             placeholder="Email"
           />
-          <button onClick={onSubmit} className="ml-2">
+          <button onSubmit={handleSubmit(submit)} className="ml-2">
             Enroll
           </button>
         </div>
-        {(errors?.email && (
-          <h1 className="text-red-400">{errors.email.message}</h1>
-        )) ||
-          (message && <h1 className="text-green-400">{message}</h1>)}
+        {error ? (
+          <h1 className="text-red-400">{error.message}</h1>
+        ) : (
+          message && <h1 className="text-green-400">{message}</h1>
+        )}
       </form>
     </>
   );

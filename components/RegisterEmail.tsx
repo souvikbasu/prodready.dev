@@ -16,16 +16,13 @@ function RegisterEmail(): JSX.Element {
   });
   const [message, setMessage] = useState("");
   const [emailInput, setEmailInput] = useState("");
-  const [values, setValues] = useState("");
-
   const { handleSubmit, register, errors } = useForm();
 
-  const submit = ({ data, e }: any) => {
+  const submit = () => {
     saveUserSpot({ variables: { email: emailInput } });
     setMessage(
       "Congratulations! you have been enrolled into the workshop. I will send you further details as the dates near."
     );
-    setValues("");
   };
 
   return (
@@ -57,7 +54,15 @@ function RegisterEmail(): JSX.Element {
         {error ? (
           <h1 className="text-red-400">{error.message}</h1>
         ) : (
-          message && <h1 className="text-green-400">{message}</h1>
+          [
+            message ? (
+              <h1 className="text-green-400">{message}</h1>
+            ) : (
+              errors?.email && (
+                <h1 className="text-red-400">{errors.email.message}</h1>
+              )
+            ),
+          ]
         )}
       </form>
     </>

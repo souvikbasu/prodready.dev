@@ -1,12 +1,10 @@
 import React from "react";
-import StripeCheckoutButton from "../components/stripebutton";
+import CheckoutButton from "../components/CheckoutPage";
 
 function Checkout() {
-  const totalPrice = 100;
-
   return (
     <div>
-      <StripeCheckoutButton totalPrice={totalPrice} />
+      <CheckoutButton />
     </div>
   );
 }

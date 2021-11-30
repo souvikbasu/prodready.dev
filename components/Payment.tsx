@@ -3,11 +3,9 @@ import StripeCheckout from "react-stripe-checkout";
 
 function Payment() {
   const totalPrice = 100;
-  const publishableKey =
-    "pk_test_51JyvqZSFWb1hhs6iXu6o7geRq7PrRQYyLzg99iyoqTA8cwK9ccI0sWFmp9mnX1sPlRBewzT9kA3Kc8IwtanApwIf00pR6tm02Y";
+  const publishableKey = process.env.PUBLISHABLE_KEY;
 
   const onToken = (token: any) => {
-    console.log(token);
     alert("Payment Successful");
   };
   return (
@@ -16,8 +14,8 @@ function Payment() {
         <StripeCheckout
           label="Pay now"
           name="React Workshop"
-          description={`Your total is ₹${totalPrice}`}
-          panelLabel={`Pay Now ₹${totalPrice}`}
+          description={`Your total is USD${totalPrice}`}
+          panelLabel={`Pay Now USD${totalPrice}`}
           token={onToken}
           stripeKey={publishableKey}
         >

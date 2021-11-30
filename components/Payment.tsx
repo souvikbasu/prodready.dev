@@ -20,7 +20,11 @@ function Payment() {
           panelLabel={`Pay Now ₹${totalPrice}`}
           token={onToken}
           stripeKey={publishableKey}
-        />
+        >
+          <button className="w-32 h-10 bg-buttonbg rounded text-white px-4">
+            Pay Now
+          </button>
+        </StripeCheckout>
       </section>
     </div>
   );

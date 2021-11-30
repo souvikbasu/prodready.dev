@@ -5,7 +5,7 @@ import Email from "./Email";
 import Location from "./Location";
 import Payment from "./Payment";
 
-const CheckoutButton = () => {
+const CheckoutPage = () => {
   const [page, setPage] = useState(0);
   const [formData, setFormData] = useState({
     email: "",
@@ -26,9 +26,6 @@ const CheckoutButton = () => {
     <div className="sm:h-screen overflow-x-hidden w-max sm:w-full bg-black">
       <main className="grid sm:flex bg-black h-max sm:h-screen justify-center py-20 w-max sm:w-screen sm:py-36">
         <div className="ml-5 bg-white px-6 sm:px-10 py-4 w-11/12 sm:w-1/4 h-96 rounded-lg">
-          <Link href="/">
-            <button className="text-black bg-transparent">Home</button>
-          </Link>
           <button
             className={`${
               page === 0
@@ -64,7 +61,7 @@ const CheckoutButton = () => {
               disabled={page === 0}
               onClick={() => setPage((currPage) => currPage - 1)}
               type="submit"
-              className="mt-6 w-48 bg-blue-900"
+              className="mt-6 w-48 h-10 bg-buttonbg rounded text-white px-4"
             >
               Back
             </button>
@@ -78,7 +75,7 @@ const CheckoutButton = () => {
                 }
               }}
               type="submit"
-              className="ml-5 mt-6 w-48 bg-blue-900"
+              className="ml-5 mt-6 w-48 h-10 bg-buttonbg rounded text-white px-4"
             >
               {page >= 2 ? "Submit" : "Continue"}
             </button>
@@ -92,15 +89,15 @@ const CheckoutButton = () => {
           </p>
           <div className="flex justify-between border-dotted border-b-2 mt-6">
             <h2 className="font-normal text-base">Subtotal</h2>
-            <h2 className="font-normal text-base">$349.00 USD</h2>
+            <h2 className="font-normal text-base">$99.00 USD</h2>
           </div>
           <div className="flex justify-between border-dotted border-b-2 mt-4">
             <h2 className="font-normal text-base">Sales Tax / VAT</h2>
-            <h2 className="font-normal text-base">$62.82 USD</h2>
+            <h2 className="font-normal text-base">$0</h2>
           </div>
           <div className="flex justify-between mt-4">
             <h2 className="font-normal text-base">Total Price</h2>
-            <h2 className="font-normal text-base">$411.82 USD</h2>
+            <h2 className="font-normal text-base">$99.00 USD</h2>
           </div>
         </div>
       </main>
@@ -113,4 +110,4 @@ const CheckoutButton = () => {
   );
 };
 
-export default CheckoutButton;
+export default CheckoutPage;

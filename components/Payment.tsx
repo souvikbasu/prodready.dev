@@ -1,15 +1,16 @@
 import React from "react";
 import StripeCheckout from "react-stripe-checkout";
 
-function Payment() {
+function Payment({ formData }: any) {
   const totalPrice = 100;
-  const publishableKey = process.env.PUBLISHABLE_KEY;
+  const publishableKey = process.env.NEXT_PUBLIC_KEY;
 
   const onToken = (token: any) => {
     alert("Payment Successful");
+    console.log(formData);
   };
   return (
-    <div className="flex justify-center my-24">
+    <div className="flex justify-center">
       <section>
         <StripeCheckout
           label="Pay now"
@@ -19,7 +20,7 @@ function Payment() {
           token={onToken}
           stripeKey={publishableKey}
         >
-          <button className="w-32 h-10 bg-buttonbg rounded text-white px-4">
+          <button className="w-32 h-10 bg-buttonbg rounded text-white mt-64">
             Pay Now
           </button>
         </StripeCheckout>

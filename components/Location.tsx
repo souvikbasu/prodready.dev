@@ -1,4 +1,5 @@
 import React from "react";
+import Countries from "./Country";
 
 function Location({ formData, setFormData }: any) {
   return (
@@ -12,16 +13,7 @@ function Location({ formData, setFormData }: any) {
         </p>
         <div className="mt-6 flex items-center">
           <h3 className="text-black font-medium mr-6">Country:</h3>
-          <input
-            className="text-input rounded w-72"
-            name="country"
-            type="text"
-            id="country"
-            value={formData.country}
-            onChange={(e) =>
-              setFormData({ ...formData, country: e.target.value })
-            }
-          />
+          <Countries formData={formData} setFormData={setFormData} />
         </div>
         <div className="mt-6 flex items-center">
           <h3 className="text-black font-medium mr-4">Postcode:</h3>

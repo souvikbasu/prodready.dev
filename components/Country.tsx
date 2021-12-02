@@ -20,7 +20,9 @@ export default function Countries({ formData, setFormData }) {
   const [selectedCountry, setSelectedCountry] = useState("");
   const classes = useStyles();
 
-  const selectCountryHandler = (value) => setSelectedCountry(value);
+  const selectCountryHandler = (e) => {
+    setSelectedCountry(e);
+  };
 
   countries.registerLocale(enLocale);
   countries.registerLocale(itLocale);
@@ -42,8 +44,11 @@ export default function Countries({ formData, setFormData }) {
         id="country"
         className="w-72"
         value={selectedCountry || formData.country}
-        onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-        onClick={(e) => selectCountryHandler(e.target.value)}
+        onChange={(e) =>
+          selectCountryHandler(
+            setFormData({ ...formData, country: e.target.value })
+          )
+        }
         MenuProps={{
           classes: {
             paper: classes.paper,

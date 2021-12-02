@@ -1,6 +1,4 @@
-/* eslint-disable @next/next/link-passhref */
 import React, { useState } from "react";
-import Link from "next/link";
 import Email from "./Email";
 import Location from "./Location";
 import Payment from "./Payment";
@@ -19,65 +17,95 @@ const CheckoutPage = () => {
     } else if (page === 1) {
       return <Location formData={formData} setFormData={setFormData} />;
     } else {
-      return <Payment />;
+      return <Payment formData={formData} />;
     }
   };
   return (
     <div className="sm:h-screen overflow-x-hidden w-max sm:w-full bg-black">
-      <main className="grid sm:flex bg-black h-max sm:h-screen justify-center py-20 w-max sm:w-screen sm:py-36">
-        <div className="ml-5 bg-white px-6 sm:px-10 py-4 w-11/12 sm:w-1/4 h-96 rounded-lg">
-          <button
-            className={`${
-              page === 0
-                ? "font-bold text-black bg-transparent"
-                : "font-medium text-black bg-transparent"
-            }`}
-          >
-            Email
-          </button>
-          <button
-            className={`${
-              page === 1
-                ? "font-bold text-black bg-transparent"
-                : "font-medium text-black bg-transparent"
-            }`}
-          >
-            Location
-          </button>
-          <button
-            className={`${
-              page >= 2
-                ? "font-bold text-black bg-transparent"
-                : "font-medium text-black bg-transparent"
-            }`}
-          >
-            Payment
-          </button>
+      <div className="grid sm:flex bg-black h-max sm:h-screen justify-center py-20 w-max sm:w-screen sm:py-36">
+        <div className="ml-5 bg-white px-6 sm:px-10 py-4 w-11/12 md:w-max lg:w-max sm:w-max h-96 rounded-lg">
+          <div className="flex items-center">
+            <button
+              className={`${
+                page === 0
+                  ? "flex items-center -ml-4 font-bold text-black bg-transparent"
+                  : "flex items-center -ml-4 font-medium text-black bg-transparent"
+              }`}
+            >
+              Email
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="black"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+            <button
+              className={`${
+                page === 1
+                  ? "flex items-center font-bold text-black bg-transparent"
+                  : "flex items-center font-medium text-black bg-transparent"
+              }`}
+            >
+              Location
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="black"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+            <button
+              className={`${
+                page >= 2
+                  ? "font-bold text-black bg-transparent"
+                  : "font-medium text-black bg-transparent"
+              }`}
+            >
+              Payment
+            </button>
+          </div>
           <div>
             <section>{PageDisplay()}</section>
           </div>
-          <div className="flex">
+          <div className="flex mt-6">
             <button
               disabled={page === 0}
               onClick={() => setPage((currPage) => currPage - 1)}
               type="submit"
-              className="mt-6 w-48 h-10 bg-buttonbg rounded text-white px-4"
+              className={`${
+                page >= 2 ? "-ml-4 -mt-16" : "-ml-4"
+              } mt-6 font-normal text-sm bg-transparent rounded text-blue-600 px-4`}
             >
               Back
             </button>
             <button
               onClick={() => {
                 if (page >= 2) {
-                  alert("Form submitted");
                   console.log(formData);
                 } else {
                   setPage((currPage) => currPage + 1);
                 }
               }}
               type="submit"
-              className="ml-5 mt-6 w-48 h-10 bg-buttonbg rounded text-white px-4"
+              className={`${page === 1 ? "ml-10" : "ml-5"} ${
+                page >= 2 ? "hidden" : "block"
+              }
+              mt-6 w-48 h-10 bg-buttonbg rounded text-white px-4`}
             >
-              {page >= 2 ? "Submit" : "Continue"}
+              Continue
             </button>
           </div>
         </div>
@@ -100,7 +128,7 @@ const CheckoutPage = () => {
             <h2 className="font-normal text-base">$99.00 USD</h2>
           </div>
         </div>
-      </main>
+      </div>
       <footer className="bg-black max-h-screen flex p-4 border-t-2 border-gray-100 justify-center items-center">
         <div className="text-sm text-graytext">
           © 2021 Souvik Basu. All Rights Reserved.

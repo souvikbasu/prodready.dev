@@ -71,7 +71,7 @@ function RegisterEmail(): JSX.Element {
               },
             })}
             placeholder="Email"
-            className="w-full p-2"
+            className="w-full rounded-md p-2"
           />
           <button onSubmit={handleSubmit(submit)} className="ml-2">
             Enroll

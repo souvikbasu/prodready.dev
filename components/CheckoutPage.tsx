@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import Email from "./Email";
+import Footer from "./Footer/footer";
 import Location from "./Location";
 import Payment from "./Payment";
+import { data } from "../public/data/data.json";
 
 const CheckoutPage = () => {
   const [page, setPage] = useState(0);
@@ -15,37 +17,23 @@ const CheckoutPage = () => {
   const [currency, setCurrency] = useState("$");
   const [pin, setPin] = useState("");
   const [total, setTotal] = useState(0);
-  let CAValue = 120.0;
-  let USValue = 99.0;
-  let INDValue = 7000.0;
-  let CAGSTValue = 5;
-  let OTHGSTValue = 0;
+  let OthValue = 99.0;
+  let OthGSTValue = 0;
 
   const CalculateGST = (e) => {
-    if (e.target.value === "CA") {
-      setPrice(CAValue);
-      setGst(CAGSTValue);
-      setCurrency("CAD");
-      setPin("Postal Code");
-      setTotal(CAValue * 0.05 + CAValue);
-    } else if (e.target.value === "US") {
-      setPrice(USValue);
-      setGst(OTHGSTValue);
-      setCurrency("$");
-      setPin("ZIP Code");
-      setTotal(USValue);
-    } else if (e.target.value === "IN") {
-      setPrice(INDValue);
-      setGst(OTHGSTValue);
-      setCurrency("INR");
-      setPin("PIN");
-      setTotal(INDValue);
+    let found = data.find((item) => item.title === e.target.value);
+    if (found) {
+      setPrice(found.value);
+      setGst(found.gst);
+      setCurrency(found.currency);
+      setPin(found.postal);
+      setTotal(found.value * found.gst + found.value);
     } else {
-      setPrice(USValue);
-      setGst(OTHGSTValue);
-      setCurrency("$");
-      setTotal(USValue);
-      setPin("Postcode");
+      setPrice(OthValue);
+      setGst(OthGSTValue);
+      setCurrency(currency);
+      setTotal(OthValue);
+      setPin("");
     }
   };
 
@@ -191,11 +179,7 @@ const CheckoutPage = () => {
           </div>
         </div>
       </div>
-      <footer className="bg-black max-h-screen flex p-4 border-t-2 border-gray-100 justify-center items-center">
-        <div className="text-sm text-graytext">
-          © 2021 Souvik Basu. All Rights Reserved.
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

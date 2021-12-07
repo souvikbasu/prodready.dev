@@ -29,7 +29,7 @@ function RegisterEmail(): JSX.Element {
 
   return (
     <>
-      <div className="justify-center w-2/6 mt-20">
+      <div className="justify-center w-screen md:w-6/12 2xl:w-3/12 lg:w-4/12 sm:w-9/12 mt-20">
         <h1 className="text-2xl">CSS can be fun. I promise.</h1>
         <p className="text-lg">
           For a lot of front-end developers, CSS is the most frustrating part of
@@ -53,7 +53,7 @@ function RegisterEmail(): JSX.Element {
       </div>
       <form
         onSubmit={handleSubmit(submit)}
-        className="w-535 bg-graybg rounded p-10 mt-20"
+        className="w-screen md:w-7/12 2xl:w-3/12 lg:w-4/12 sm:w-9/12 bg-graybg rounded p-5 sm:p-10 mt-20"
       >
         <h2>Save my spot</h2>
         <h4>No payment needed as of now. Pay only once you confirm</h4>
@@ -71,6 +71,7 @@ function RegisterEmail(): JSX.Element {
               },
             })}
             placeholder="Email"
+            className="w-full p-2"
           />
           <button onSubmit={handleSubmit(submit)} className="ml-2">
             Enroll
@@ -82,30 +83,24 @@ function RegisterEmail(): JSX.Element {
             <h1 className="text-red-400">{errors.email.message}</h1>
           ))}
       </form>
-      <div className="mt-20 w-2/6 bg-white">
-        <h1 className="mt-8 ml-6 h-10 font-bold text-2xl text-blue-900">
+      <div className="h-80 lg:h-1/2 mt-20 w-screen md:w-6/12 lg:w-3/12 sm:w-9/12 bg-white">
+        <h1 className="mt-4 ml-4 h-4 font-bold text-xl text-blue-900">
           Frequently Asked Questions
         </h1>
-        <h3 className="mt-6 ml-6 font-medium text-gray-600 text-xl">
+        <h3 className="mt-9 ml-4 font-medium text-gray-600 text-lg">
           {">"} Difficulty in placing orders?
         </h3>
-        <p className="mt-5 ml-6 font-medium text-lg text-gray-500">
+        <p className="mt-1 ml-4 font-medium text-sm text-gray-500">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. In purus dui,
           scelerisque id orci vel, cursus commodo ante.
         </p>
-        <h3 className="mt-6 ml-6 font-medium text-gray-600 text-xl">
+        <h3 className="mt-3 ml-4 font-medium text-gray-600 text-lg">
           {">"} Shipping related queries?
         </h3>
-        <p className="mt-5 ml-6 font-medium text-lg text-gray-500">
+        <p className="mt-1 ml-4 font-medium text-sm text-gray-500">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. In purus dui,
           scelerisque id orci vel, cursus commodo ante.{" "}
         </p>
-        <button className="mt-2 w-36 h-10 bg-transparent text-lg text-blue-800">
-          View All
-        </button>
-        <button className="h-10 text-lg left-96 bg-transparent text-blue-900">
-          Any more questions? Talk to us {"-->"}
-        </button>
       </div>
     </>
   );

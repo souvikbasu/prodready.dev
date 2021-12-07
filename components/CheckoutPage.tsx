@@ -10,12 +10,66 @@ const CheckoutPage = () => {
     country: "",
     postcode: "",
   });
+  const [price, setPrice] = useState(0);
+  const [gst, setGst] = useState(0);
+  const [currency, setCurrency] = useState("$");
+  const [pin, setPin] = useState("");
+  const [total, setTotal] = useState(0);
+  let CAValue = 120.0;
+  let USValue = 99.0;
+  let INDValue = 7000.0;
+  let CAGSTValue = 5;
+  let OTHGSTValue = 0;
+
+  const CalculateGST = (e) => {
+    if (e.target.value === "CA") {
+      setPrice(CAValue);
+      setGst(CAGSTValue);
+      setCurrency("CAD");
+      setPin("Postal Code");
+      setTotal(CAValue * 0.05 + CAValue);
+    } else if (e.target.value === "US") {
+      setPrice(USValue);
+      setGst(OTHGSTValue);
+      setCurrency("$");
+      setPin("ZIP Code");
+      setTotal(USValue);
+    } else if (e.target.value === "IN") {
+      setPrice(INDValue);
+      setGst(OTHGSTValue);
+      setCurrency("INR");
+      setPin("PIN");
+      setTotal(INDValue);
+    } else {
+      setPrice(USValue);
+      setGst(OTHGSTValue);
+      setCurrency("$");
+      setTotal(USValue);
+      setPin("Postcode");
+    }
+  };
 
   const PageDisplay = () => {
     if (page === 0) {
-      return <Email formData={formData} setFormData={setFormData} />;
+      return (
+        <Email
+          page={page}
+          setPage={setPage}
+          formData={formData}
+          setFormData={setFormData}
+        />
+      );
     } else if (page === 1) {
-      return <Location formData={formData} setFormData={setFormData} />;
+      return (
+        <Location
+          pin={pin}
+          page={page}
+          setPage={setPage}
+          CalculateGST={CalculateGST}
+          formData={formData}
+          setFormData={setFormData}
+        />
+      );
     } else {
       return <Payment formData={formData} />;
     }
@@ -82,11 +136,13 @@ const CheckoutPage = () => {
           </div>
           <div className="flex mt-6">
             <button
-              disabled={page === 0}
               onClick={() => setPage((currPage) => currPage - 1)}
               type="submit"
-              className={`${
-                page >= 2 ? "-ml-4 -mt-16" : "-ml-4"
+              className={`${page >= 2 ? "-ml-4 -mt-16" : "-ml-4"} ${
+                page === 0 ? "hidden" : "block"
+              }
+              ${
+                page === 1 ? "hidden" : "block"
               } mt-6 font-normal text-sm bg-transparent rounded text-blue-600 px-4`}
             >
               Back
@@ -102,7 +158,8 @@ const CheckoutPage = () => {
               type="submit"
               className={`${page === 1 ? "ml-10" : "ml-5"} ${
                 page >= 2 ? "hidden" : "block"
-              }
+              } ${page <= 0 ? "hidden" : "block"}
+              } ${page === 1 ? "hidden" : "block"}
               mt-6 w-48 h-10 bg-buttonbg rounded text-white px-4`}
             >
               Continue
@@ -117,15 +174,20 @@ const CheckoutPage = () => {
           </p>
           <div className="flex justify-between border-dotted border-b-2 mt-6">
             <h2 className="font-normal text-base">Subtotal</h2>
-            <h2 className="font-normal text-base">$99.00 USD</h2>
+            <h2 className="font-normal text-base">
+              {currency}&nbsp; {price}
+            </h2>
           </div>
           <div className="flex justify-between border-dotted border-b-2 mt-4">
             <h2 className="font-normal text-base">Sales Tax / VAT</h2>
-            <h2 className="font-normal text-base">$0</h2>
+            <h2 className="font-normal text-base">{gst}%</h2>
           </div>
           <div className="flex justify-between mt-4">
             <h2 className="font-normal text-base">Total Price</h2>
-            <h2 className="font-normal text-base">$99.00 USD</h2>
+            <h2 className="font-normal text-base">
+              {currency}&nbsp;
+              {total}
+            </h2>
           </div>
         </div>
       </div>

@@ -9,6 +9,9 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     background: "rgb(192,192,192)",
     color: "black",
+    width: "40px",
+    position: "fixed",
+    height: "300px",
   },
   input: {
     color: "black",
@@ -16,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Countries({ formData, setFormData }) {
+export default function Countries({ CalculateGST, formData, setFormData }) {
   const [selectedCountry, setSelectedCountry] = useState("");
   const classes = useStyles();
 
@@ -28,7 +31,6 @@ export default function Countries({ formData, setFormData }) {
   countries.registerLocale(itLocale);
 
   const countryObj = countries.getNames("en", { select: "official" });
-
   const countryArr = Object.entries(countryObj).map(([key, value]) => {
     return {
       label: value,
@@ -42,13 +44,14 @@ export default function Countries({ formData, setFormData }) {
         name="country"
         type="text"
         id="country"
-        className="w-72"
+        className="w-72 text-black"
         value={selectedCountry || formData.country}
-        onChange={(e) =>
+        onChange={(e) => {
           selectCountryHandler(
             setFormData({ ...formData, country: e.target.value })
-          )
-        }
+          );
+          CalculateGST(e);
+        }}
         MenuProps={{
           classes: {
             paper: classes.paper,

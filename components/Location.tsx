@@ -1,7 +1,19 @@
 import React from "react";
 import Countries from "./Country";
+import { useForm } from "react-hook-form";
 
-function Location({ formData, setFormData }: any) {
+function Location({
+  pin,
+  page,
+  setPage,
+  CalculateGST,
+  formData,
+  setFormData,
+}: any) {
+  const { handleSubmit, register, errors } = useForm();
+  const submit = () => {
+    setPage(page + 1);
+  };
   return (
     <div>
       <section>
@@ -13,19 +25,55 @@ function Location({ formData, setFormData }: any) {
         </p>
         <div className="mt-6 flex items-center">
           <h3 className="text-black font-medium mr-6">Country:</h3>
-          <Countries formData={formData} setFormData={setFormData} />
+          <Countries
+            CalculateGST={CalculateGST}
+            formData={formData}
+            setFormData={setFormData}
+          />
         </div>
         <div className="mt-6 flex items-center">
-          <h3 className="text-black font-medium mr-4">Postcode:</h3>
+          <h3 className="w-20 text-black font-medium mr-4">
+            {pin || "Postcode"}:
+          </h3>
           <input
             value={formData.postcode}
             onChange={(e) =>
               setFormData({ ...formData, postcode: e.target.value })
             }
-            className="rounded w-72"
+            ref={register({
+              required: "Postcode is required",
+              pattern: {
+                value: /^[1-9]\d*$/,
+                message: "Please enter a valid postcode",
+              },
+            })}
+            className="-ml-1 rounded w-72"
             name="postcode"
             type="number"
           />
+        </div>
+        {errors?.postcode && (
+          <h1 className="ml-20 text-sm text-red-500">
+            {errors.postcode.message}
+          </h1>
+        )}
+        <div className="-ml-4 flex mt-0">
+          <button
+            onClick={() => setPage((currPage) => currPage - 1)}
+            className={`mt-6 font-normal text-sm bg-transparent rounded text-blue-600 px-4`}
+          >
+            Back
+          </button>
+          <button
+            onClick={handleSubmit(submit)}
+            type="button"
+            className={`${page === 1 ? "ml-10" : "ml-5"} ${
+              page >= 2 ? "hidden" : "block"
+            } ${page <= 0 ? "-ml-0" : "-ml-0"}
+            mt-6 w-48 h-10 bg-buttonbg rounded text-white px-4`}
+          >
+            Continue
+          </button>
         </div>
       </section>
     </div>

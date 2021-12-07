@@ -1,0 +1,25 @@
+{
+  "data": [
+    {
+      "title": "US",
+      "value": 99.0,
+      "gst": 0,
+      "currency": "$",
+      "postal": "ZIP Code"
+    },
+    {
+      "title": "CA",
+      "value": 120.0,
+      "gst": 0.05,
+      "currency": "CAD",
+      "postal": "Postal Code"
+    },
+    {
+      "title": "IN",
+      "value": 7000.0,
+      "gst": 0,
+      "currency": "INR",
+      "postal": "PIN"
+    }
+  ]
+}

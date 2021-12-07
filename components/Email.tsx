@@ -20,7 +20,7 @@ function Email({ page, setPage, formData, setFormData }: any) {
         <form className="mt-6 flex items-center">
           <h3 className="text-black font-medium mr-6">Email:</h3>
           <input
-            className="text-input w-72"
+            className="text-input rounded-md w-72"
             name="email"
             type="text"
             placeholder="name@domain.com"

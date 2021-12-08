@@ -1,32 +1,29 @@
 import React from "react";
-import StripeCheckout from "react-stripe-checkout";
+import { loadStripe } from "@stripe/stripe-js";
 
-function Payment({ formData }: any) {
-  const totalPrice = 100;
-  const publishableKey = process.env.NEXT_PUBLIC_STRIPE_KEY;
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+);
+export default function Payment() {
+  React.useEffect(() => {
+    const query = new URLSearchParams(window.location.search);
+    if (query.get("success")) {
+      console.log("Order placed! You will receive an email confirmation.");
+    }
+    if (query.get("canceled")) {
+      console.log(
+        "Order canceled -- continue to shop around and checkout when you’re ready."
+      );
+    }
+  }, []);
 
-  const onToken = (token: any) => {
-    alert("Payment Successful");
-    console.log(formData);
-  };
   return (
-    <div className="flex justify-center">
+    <form action="/api/checkout_sessions" method="POST">
       <section>
-        <StripeCheckout
-          label="Pay now"
-          name="React Workshop"
-          description={`Your total is USD${totalPrice}`}
-          panelLabel={`Pay Now USD${totalPrice}`}
-          token={onToken}
-          stripeKey={publishableKey}
-        >
-          <button className="w-32 h-10 bg-buttonbg rounded text-white mt-64">
-            Pay Now
-          </button>
-        </StripeCheckout>
+        <button className="w-32 ml-16 mt-64" type="submit" role="link">
+          Checkout
+        </button>
       </section>
-    </div>
+    </form>
   );
 }
-
-export default Payment;

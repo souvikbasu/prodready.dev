@@ -1,21 +1,21 @@
 {
   "data": [
     {
-      "title": "US",
+      "title": "United States",
       "value": 99.0,
       "gst": 0,
       "currency": "$",
       "postal": "ZIP Code"
     },
     {
-      "title": "CA",
+      "title": "Canada",
       "value": 120.0,
-      "gst": 0.05,
+      "gst": 5,
       "currency": "CAD",
       "postal": "Postal Code"
     },
     {
-      "title": "IN",
+      "title": "India",
       "value": 7000.0,
       "gst": 0,
       "currency": "INR",

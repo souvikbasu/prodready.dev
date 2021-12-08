@@ -24,7 +24,7 @@ function Location({
           Your location is used to calculate sales tax, if applicable.
         </p>
         <div className="mt-6 flex items-center">
-          <h3 className="text-black font-medium mr-6">Country:</h3>
+          <h3 className="w-20 text-black text-sm font-medium mr-6">Country:</h3>
           <Countries
             CalculateGST={CalculateGST}
             formData={formData}
@@ -32,7 +32,7 @@ function Location({
           />
         </div>
         <div className="mt-6 flex items-center">
-          <h3 className="w-20 text-black font-medium mr-4">
+          <h3 className="w-24 text-black text-sm font-medium mr-4">
             {pin || "Postcode"}:
           </h3>
           <input
@@ -41,19 +41,19 @@ function Location({
               setFormData({ ...formData, postcode: e.target.value })
             }
             ref={register({
-              required: "Postcode is required",
+              required: pin || "Postcode is required",
               pattern: {
-                value: /^[1-9]\d*$/,
+                value: /^[A-Za-z0-9]{1,10}$/,
                 message: "Please enter a valid postcode",
               },
             })}
-            className="-ml-1 rounded w-72"
+            className="-ml-2 rounded w-72"
             name="postcode"
-            type="number"
+            type="text"
           />
         </div>
         {errors?.postcode && (
-          <h1 className="ml-20 text-sm text-red-500">
+          <h1 className="ml-24 text-sm text-red-500">
             {errors.postcode.message}
           </h1>
         )}

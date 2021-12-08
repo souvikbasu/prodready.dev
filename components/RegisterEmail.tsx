@@ -1,7 +1,9 @@
+/* eslint-disable @next/next/link-passhref */
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState } from "react";
 import { gql, useMutation } from "@apollo/client";
 import { useForm } from "react-hook-form";
+import Link from "next/link";
 
 const SAVE_USER_SPOT = gql`
   mutation saveUserSpot($email: String) {
@@ -53,7 +55,7 @@ function RegisterEmail(): JSX.Element {
       </div>
       <form
         onSubmit={handleSubmit(submit)}
-        className="w-screen md:w-7/12 2xl:w-3/12 lg:w-4/12 sm:w-9/12 bg-graybg rounded p-5 sm:p-10 mt-20"
+        className="w-max md:w-9/12 2xl:w-4/12 lg:w-6/12 sm:w-10/12 bg-graybg rounded p-5 sm:p-10 mt-20"
       >
         <h2>Save my spot</h2>
         <h4>No payment needed as of now. Pay only once you confirm</h4>
@@ -71,11 +73,16 @@ function RegisterEmail(): JSX.Element {
               },
             })}
             placeholder="Email"
-            className="w-full rounded-md p-2"
+            className="w-64 rounded-md p-2"
           />
-          <button onSubmit={handleSubmit(submit)} className="ml-2">
-            Enroll
+          <button onSubmit={handleSubmit(submit)} className="ml-2 text-sm">
+            <p className="w-16">Pay Later</p>
           </button>
+          <Link href="/checkout">
+            <button onSubmit={handleSubmit(submit)} className="ml-2 mr-4">
+              Enroll
+            </button>
+          </Link>
         </div>
         {(error && <h1 className="text-red-400">{error.message}</h1>) ||
           (message && <h1 className="text-green-400">{message}</h1>) ||

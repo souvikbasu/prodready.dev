@@ -27,11 +27,15 @@ const CheckoutPage = () => {
       setGst(found.gst);
       setCurrency(found.currency);
       setPin(found.postal);
-      setTotal(found.value * found.gst + found.value);
+      if (found.title === "Canada") {
+        setTotal(found.value * 0.05 + found.value);
+      } else {
+        setTotal(found.value + OthGSTValue);
+      }
     } else {
       setPrice(OthValue);
       setGst(OthGSTValue);
-      setCurrency(currency);
+      setCurrency("$");
       setTotal(OthValue);
       setPin("");
     }
@@ -59,7 +63,7 @@ const CheckoutPage = () => {
         />
       );
     } else {
-      return <Payment formData={formData} />;
+      return <Payment />;
     }
   };
   return (
@@ -163,11 +167,11 @@ const CheckoutPage = () => {
           <div className="flex justify-between border-dotted border-b-2 mt-6">
             <h2 className="font-normal text-base">Subtotal</h2>
             <h2 className="font-normal text-base">
-              {currency}&nbsp; {price}
+              {currency}&nbsp; {price ? price : "99"}
             </h2>
           </div>
           <div className="flex justify-between border-dotted border-b-2 mt-4">
-            <h2 className="font-normal text-base">Sales Tax / VAT</h2>
+            <h2 className="font-normal text-base">GST / VAT</h2>
             <h2 className="font-normal text-base">{gst}%</h2>
           </div>
           <div className="flex justify-between mt-4">

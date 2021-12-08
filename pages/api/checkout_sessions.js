@@ -13,8 +13,8 @@ export default async function handler(req, res) {
           },
         ],
         mode: "payment",
-        success_url: "http://localhost:3000/success",
-        cancel_url: "http://localhost:3000/failure",
+        success_url: process.env.SUCCESS_URL,
+        cancel_url: process.env.FAILURE_URL,
       });
       res.redirect(303, session.url);
     } catch (err) {

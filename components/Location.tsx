@@ -41,7 +41,7 @@ function Location({
               setFormData({ ...formData, postcode: e.target.value })
             }
             ref={register({
-              required: pin || "Postcode is required",
+              required: pin || "Field is required",
               pattern: {
                 value: /^[A-Za-z0-9]{1,10}$/,
                 message: "Please enter a valid postcode",
@@ -53,7 +53,7 @@ function Location({
           />
         </div>
         {errors?.postcode && (
-          <h1 className="ml-24 text-sm text-red-500">
+          <h1 className="ml-28 text-sm text-red-500">
             {errors.postcode.message}
           </h1>
         )}

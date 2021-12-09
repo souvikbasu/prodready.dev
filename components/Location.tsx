@@ -6,7 +6,7 @@ function Location({
   pin,
   page,
   setPage,
-  CalculateGST,
+  calculateGST,
   formData,
   setFormData,
 }: any) {
@@ -14,6 +14,9 @@ function Location({
   const submit = () => {
     setPage(page + 1);
   };
+  var india = new RegExp(/^([1-9]{1})([0-9]{5})$/);
+  var canada = new RegExp(/^([A-Z]\d[A-Z]\d[A-Z]\d)$/);
+  var usa = new RegExp(/^([0-9]{5})(-[0-9]{4})?$/);
   return (
     <div>
       <section>
@@ -26,7 +29,7 @@ function Location({
         <div className="mt-6 flex items-center">
           <h3 className="w-20 text-black text-sm font-medium mr-6">Country:</h3>
           <Countries
-            CalculateGST={CalculateGST}
+            calculateGST={calculateGST}
             formData={formData}
             setFormData={setFormData}
           />
@@ -40,11 +43,11 @@ function Location({
             onChange={(e) =>
               setFormData({ ...formData, postcode: e.target.value })
             }
-            ref={register({
-              required: pin || "Field is required",
+            {...register({
+              required: "Postcode is mandatory",
               pattern: {
-                value: /^[A-Za-z0-9]{1,10}$/,
-                message: "Please enter a valid postcode",
+                value: india || canada || usa,
+                message: "Field is invalid",
               },
             })}
             className="-ml-2 rounded w-72"

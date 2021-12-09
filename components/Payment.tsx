@@ -20,8 +20,8 @@ export default function Payment() {
   return (
     <form action="/api/checkout_sessions" method="POST">
       <section>
-        <button className="w-32 ml-16 mt-64" type="submit" role="link">
-          Checkout
+        <button className="w-36 ml-16 mt-64" type="submit" role="link">
+          Pay Now
         </button>
       </section>
     </form>

@@ -31,7 +31,7 @@ function RegisterEmail(): JSX.Element {
 
   return (
     <>
-      <div className="justify-center w-screen md:w-6/12 2xl:w-3/12 lg:w-4/12 sm:w-9/12 mt-20">
+      <div className="justify-center w-screen md:w-6/12 2xl:w-4/12 lg:w-5/12 sm:w-9/12 mt-20">
         <h1 className="text-2xl">CSS can be fun. I promise.</h1>
         <p className="text-lg">
           For a lot of front-end developers, CSS is the most frustrating part of
@@ -61,11 +61,11 @@ function RegisterEmail(): JSX.Element {
         <h4>No payment needed as of now. Pay only once you confirm</h4>
         <div className="flex flex-row mt-4">
           <input
-            type="text"
+            type="email"
             name="email"
             value={emailInput}
             onChange={(e) => setEmailInput(e.target.value)}
-            ref={register({
+            {...register({
               required: "Email is required",
               pattern: {
                 value: /^\w+([\.-]?\w)+@\w+([\.]?\w)+(\.[a-zA-Z]{2,3})+$/,
@@ -78,10 +78,8 @@ function RegisterEmail(): JSX.Element {
           <button onSubmit={handleSubmit(submit)} className="ml-2 text-sm">
             <p className="w-16">Pay Later</p>
           </button>
-          <Link href="/checkout">
-            <button onSubmit={handleSubmit(submit)} className="ml-2 mr-4">
-              Enroll
-            </button>
+          <Link href={{ pathname: "/checkout", query: { emailInput } }}>
+            <button className="ml-2 mr-4">Enroll</button>
           </Link>
         </div>
         {(error && <h1 className="text-red-400">{error.message}</h1>) ||
@@ -90,7 +88,7 @@ function RegisterEmail(): JSX.Element {
             <h1 className="text-red-400">{errors.email.message}</h1>
           ))}
       </form>
-      <div className="h-80 lg:h-1/2 mt-20 w-screen md:w-6/12 lg:w-3/12 sm:w-9/12 bg-white">
+      <div className="h-80 lg:h-1/2 mt-20 w-screen md:w-6/12 lg:w-4/12 sm:w-9/12 bg-white">
         <h1 className="mt-4 ml-4 h-4 font-bold text-xl text-blue-900">
           Frequently Asked Questions
         </h1>

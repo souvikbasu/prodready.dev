@@ -20,7 +20,7 @@ const CheckoutPage = () => {
   let OthValue = 99.0;
   let OthGSTValue = 0;
 
-  const CalculateGST = (e) => {
+  const calculateGST = (e) => {
     let found = data.find((item) => item.title === e.target.value);
     if (found) {
       setPrice(found.value);
@@ -28,7 +28,7 @@ const CheckoutPage = () => {
       setCurrency(found.currency);
       setPin(found.postal);
       if (found.title === "Canada") {
-        setTotal(found.value * 0.05 + found.value);
+        setTotal(found.value * 1.05);
       } else {
         setTotal(found.value + OthGSTValue);
       }
@@ -57,7 +57,7 @@ const CheckoutPage = () => {
           pin={pin}
           page={page}
           setPage={setPage}
-          CalculateGST={CalculateGST}
+          calculateGST={calculateGST}
           formData={formData}
           setFormData={setFormData}
         />
@@ -167,18 +167,18 @@ const CheckoutPage = () => {
           <div className="flex justify-between border-dotted border-b-2 mt-6">
             <h2 className="font-normal text-base">Subtotal</h2>
             <h2 className="font-normal text-base">
-              {currency}&nbsp; {price ? price : "99"}
+              {currency}&nbsp; {price ? price : OthValue}
             </h2>
           </div>
           <div className="flex justify-between border-dotted border-b-2 mt-4">
-            <h2 className="font-normal text-base">GST / VAT</h2>
-            <h2 className="font-normal text-base">{gst}%</h2>
+            <h2 className="font-normal text-base">GST</h2>
+            <h2 className="font-normal text-base">{gst}</h2>
           </div>
           <div className="flex justify-between mt-4">
             <h2 className="font-normal text-base">Total Price</h2>
             <h2 className="font-normal text-base">
               {currency}&nbsp;
-              {total}
+              {total ? total : OthValue}
             </h2>
           </div>
         </div>

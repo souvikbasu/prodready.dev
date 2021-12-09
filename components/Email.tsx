@@ -1,8 +1,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 
 function Email({ page, setPage, formData, setFormData }: any) {
   const { handleSubmit, register, errors } = useForm();
+  const router = useRouter();
 
   const submit = () => {
     setPage(page + 1);
@@ -24,7 +26,7 @@ function Email({ page, setPage, formData, setFormData }: any) {
             name="email"
             type="text"
             placeholder="name@domain.com"
-            value={formData.email}
+            value={router.query.emailInput}
             ref={register({
               required: "Email is required",
               pattern: {

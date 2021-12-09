@@ -8,7 +8,7 @@ export default async function handler(req, res) {
           {
             name: "Subscription",
             currency: "inr",
-            amount: 700000,
+            amount: process.env.SUBSCRIPTION_PRICE,
             quantity: 1,
           },
         ],

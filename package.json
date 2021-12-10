@@ -27,7 +27,6 @@
     "react-dom": "17.0.2",
     "react-dropdown": "^1.9.2",
     "react-hook-form": "^6.15.1",
-    "react-router-dom": "^6.0.2",
     "react-stripe-checkout": "^2.6.3",
     "react-stripe-elements": "^6.1.2",
     "stripe": "^8.191.0"

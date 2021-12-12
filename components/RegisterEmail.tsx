@@ -32,25 +32,55 @@ function RegisterEmail(): JSX.Element {
   return (
     <>
       <div className="justify-center w-screen md:w-6/12 2xl:w-4/12 lg:w-5/12 sm:w-9/12 mt-20">
-        <h1 className="text-2xl">CSS can be fun. I promise.</h1>
+        <h1 className="text-2xl">
+          Still feel nervous to deploy a React app to Prod?
+        </h1>
         <p className="text-lg">
-          For a lot of front-end developers, CSS is the most frustrating part of
-          their work.
+          As I talk to more and more developers who are either students, working
+          as interns, or even working as full-time employees of big
+          organizations, I see that there is a gap in understanding of how to
+          deploy a professional-grade React app in production. Indeed your React
+          app works fine on localhost but before deploying your app to prod,
+          have you given a thought to
         </p>
         <p className="text-lg mt-5">
-          When you make a mistake in Typescript, you get a helpful tooltip
-          telling you exactly what you did wrong. In CSS, by contrast, you're
-          left in the dark, without any clues about why you're not getting the
-          result you expected.
+          <ul>
+            <li>How to load your app in under a second?</li>
+            <li>
+              How to profile your app to discover performance bottlenecks?
+            </li>
+            <li>How to cache your images?</li>
+            <li>Rank your page on Google/Bing first page?</li>
+            <li>How to debug an issue when reported by your customer?</li>
+            <li>How to split your modules well to reduce payload size?</li>
+            <li>Tune your webserver to compress responses?</li>
+            <li>Take care of security to tackle malicious attacks?</li>
+            <li>How to authenticate your users?</li>
+            <li>Take care of GDPR and Privacy law compliance?</li>
+            <li>
+              Testing your app cross-browser and across different display sizes?
+            </li>
+            <li>Manage application state</li>
+            <li>Styling strategy?</li>
+            <li>Internationalization?</li>
+            <li>Accessibility?</li>
+            <li>CI/CD pipeline?</li>
+            <li>Deployment strategies?</li>
+            <li>Analyzing users' behavior on the site?</li>
+            <li>Perform A/B testing?</li>
+            <li>Handle scale?</li>
+          </ul>
         </p>
         <p className="text-lg mt-6">
-          These constant bewildering surprises take us out of flow state, and
-          shake our confidence. No wonder so many of us don't enjoy writing CSS!
-        </p>
-        <p className="text-lg mt-6">
-          Despite all appearances, though, CSS is actually a deeply consistent
-          and robust language. It feels unpredictable because there are complex
-          systems involved, systems that are totally invisible to us.
+          If these points (and more such concerns) feel valid to you then I am
+          thinking to take a 2-day interactive workshop to teach "React in
+          Production". I am working on an online course as well to cover these
+          topics. This workshop will also help me to understand gaps in my
+          course to cover the needed topics. I recently gave a talk on React
+          Global Summit (Online) touching on a few of these factors. Considering
+          that most people have enough time to upskill themselves in the
+          begining of the year, I am planning to take the workshop on 12-13th
+          Feb.
         </p>
       </div>
       <form
@@ -88,25 +118,6 @@ function RegisterEmail(): JSX.Element {
             <h1 className="text-red-400">{errors.email.message}</h1>
           ))}
       </form>
-      <div className="h-80 lg:h-1/2 mt-20 w-screen md:w-6/12 lg:w-4/12 sm:w-9/12 bg-white">
-        <h1 className="mt-4 ml-4 h-4 font-bold text-xl text-blue-900">
-          Frequently Asked Questions
-        </h1>
-        <h3 className="mt-9 ml-4 font-medium text-gray-600 text-lg">
-          {">"} Difficulty in placing orders?
-        </h3>
-        <p className="mt-1 ml-4 font-medium text-sm text-gray-500">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In purus dui,
-          scelerisque id orci vel, cursus commodo ante.
-        </p>
-        <h3 className="mt-3 ml-4 font-medium text-gray-600 text-lg">
-          {">"} Shipping related queries?
-        </h3>
-        <p className="mt-1 ml-4 font-medium text-sm text-gray-500">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In purus dui,
-          scelerisque id orci vel, cursus commodo ante.{" "}
-        </p>
-      </div>
     </>
   );
 }

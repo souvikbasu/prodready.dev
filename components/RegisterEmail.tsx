@@ -2,8 +2,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState } from "react";
 import { gql, useMutation } from "@apollo/client";
-import { useForm } from "react-hook-form";
-import Link from "next/link";
+import { useRouter } from "next/router";
 
 const SAVE_USER_SPOT = gql`
   mutation saveUserSpot($email: String, $date: String, $tz: String) {
@@ -16,21 +15,29 @@ const SAVE_USER_SPOT = gql`
 `;
 
 function RegisterEmail(): JSX.Element {
+  const router = useRouter();
   const [saveUserSpot, { error }] = useMutation(SAVE_USER_SPOT, {
     errorPolicy: "all",
   });
-  const [message, setMessage] = useState("");
-  const [batch, setBatch] = useState({ date: "future", tz: "tbd" });
+  const [batch, setBatch] = useState({ date: "18-19th Dec `21", tz: "PST" });
   const [email, setEmail] = useState("");
 
   const enrollEmail = () => {
     saveUserSpot({
       variables: { email: email, date: batch["date"], tz: batch["tz"] },
     });
-    setMessage(
-      "Congratulations! you have been enrolled into the workshop. I will send you further details as the dates near."
-    );
+
     setEmail("");
+    router.push({
+      pathname: "/enrolled",
+      query: {
+        date: batch["date"],
+        tz: batch["tz"],
+        email,
+        enrolled: !error,
+        error: error?.message,
+      },
+    });
   };
 
   return (
@@ -41,7 +48,8 @@ function RegisterEmail(): JSX.Element {
           <input
             type="radio"
             name="batch"
-            onClick={() => setBatch({ date: "18-19 Dec 21", tz: "PST" })}
+            defaultChecked={true}
+            onClick={() => setBatch({ date: "18-19th Dec `21", tz: "PST" })}
           ></input>
           <span className="text-md ml-2">
             18-19th Dec 2021 (10 am to 2 pm Pacific Time)
@@ -53,7 +61,7 @@ function RegisterEmail(): JSX.Element {
           <input
             type="radio"
             name="batch"
-            onClick={() => setBatch({ date: "18-19 Dec 21", tz: "IST" })}
+            onClick={() => setBatch({ date: "18-19th Dec `21", tz: "IST" })}
           ></input>
           <span className="text-md ml-2">
             18-19th Dec 2021 (8 am to 12 noon Indian Standard Time)
@@ -65,7 +73,7 @@ function RegisterEmail(): JSX.Element {
           <input
             type="radio"
             name="batch"
-            onClick={() => setBatch({ date: "12-13 Feb 22", tz: "PST" })}
+            onClick={() => setBatch({ date: "12-13th Feb `22", tz: "PST" })}
           ></input>
           <span className="text-md ml-2">
             12-13th Feb 2022 (10 am to 2 pm Pacific Time)
@@ -77,7 +85,7 @@ function RegisterEmail(): JSX.Element {
           <input
             type="radio"
             name="batch"
-            onClick={() => setBatch({ date: "12-13 Feb 22", tz: "IST" })}
+            onClick={() => setBatch({ date: "12-13th Feb `22", tz: "IST" })}
           ></input>
           <span className="text-md ml-2">
             12-13th Feb 2022 (8 am to 12 noon Indian Standard Time)

@@ -31,7 +31,7 @@ const Home: NextPage = () => {
                 Indeed your React app works fine on localhost but before
                 deploying your app to prod, have you given a thought to
               </p>
-              <p>
+              <div>
                 <ul>
                   <li>How to load your app in under a second?</li>
                   <li>
@@ -61,7 +61,7 @@ const Home: NextPage = () => {
                   <li>Perform A/B testing?</li>
                   <li>Handle scale?</li>
                 </ul>
-              </p>
+              </div>
               <p>
                 If these points (and more such concerns) feel valid to you then
                 enroll for this 2-day interactive workshop to learn about how to

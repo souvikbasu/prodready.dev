@@ -159,10 +159,9 @@ const CheckoutPage = () => {
           </div>
         </div>
         <div className="ml-10 mt-8 sm:mt-0 sm:ml-16 w-max sm:w-1/4">
-          <h1 className="font-bold text-xl">Ultimate Package</h1>
+          <h1 className="font-bold text-xl">React in Prod workshop</h1>
           <p className="w-96 sm:w-11/12 text-gray-400 font-sm mt-8">
-            Transform your relationship with CSS! This package includes all 10
-            modules, along with a wealth of valuable bonus content.
+            Take your React skills to the next level
           </p>
           <div className="flex justify-between border-dotted border-b-2 mt-6">
             <h2 className="font-normal text-base">Subtotal</h2>

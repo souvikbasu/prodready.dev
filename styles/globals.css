@@ -20,8 +20,16 @@ a {
   @apply text-white;
 }
 
+h1 {
+  @apply font-black text-5xl text-center text-yellow;
+}
+
 h2 {
   @apply my-4 leading-5 text-2xl;
+}
+
+h3 {
+  @apply font-black text-2xl text-yellow;
 }
 
 h4 {
@@ -34,6 +42,14 @@ input {
 
 button {
   @apply h-10 bg-buttonbg rounded text-white px-4;
+}
+
+li {
+  @apply list-disc ml-8;
+}
+
+p {
+  @apply text-lg mt-6;
 }
 
 @font-face {

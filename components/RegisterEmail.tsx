@@ -6,9 +6,11 @@ import { useForm } from "react-hook-form";
 import Link from "next/link";
 
 const SAVE_USER_SPOT = gql`
-  mutation saveUserSpot($email: String) {
-    saveUserSpot(email: $email) {
+  mutation saveUserSpot($email: String, $date: String, $tz: String) {
+    saveUserSpot(email: $email, date: $date, tz: $tz) {
       email
+      date
+      tz
     }
   }
 `;
@@ -18,26 +20,29 @@ function RegisterEmail(): JSX.Element {
     errorPolicy: "all",
   });
   const [message, setMessage] = useState("");
-  const [emailInput, setEmailInput] = useState("");
-  const { handleSubmit, register, errors } = useForm();
+  const [batch, setBatch] = useState({ date: "future", tz: "tbd" });
+  const [email, setEmail] = useState("");
 
-  const submit = () => {
-    saveUserSpot({ variables: { email: emailInput } });
+  const enrollEmail = () => {
+    saveUserSpot({
+      variables: { email: email, date: batch["date"], tz: batch["tz"] },
+    });
     setMessage(
       "Congratulations! you have been enrolled into the workshop. I will send you further details as the dates near."
     );
-    setEmailInput("");
+    setEmail("");
   };
 
   return (
     <div className="max-w-lg md:max-w-2xl">
-      <form
-        onSubmit={handleSubmit(submit)}
-        className="w-full bg-graybg rounded p-5 sm:p-10 mt-20"
-      >
+      <div className="w-full bg-graybg rounded p-5 sm:p-10 mt-20">
         <h2>Save my spot</h2>
         <div>
-          <input type="radio"></input>
+          <input
+            type="radio"
+            name="batch"
+            onClick={() => setBatch({ date: "18-19 Dec 21", tz: "PST" })}
+          ></input>
           <span className="text-md ml-2">
             18-19th Dec 2021 (10 am to 2 pm Pacific Time)
           </span>
@@ -45,7 +50,11 @@ function RegisterEmail(): JSX.Element {
         </div>
 
         <div>
-          <input type="radio"></input>
+          <input
+            type="radio"
+            name="batch"
+            onClick={() => setBatch({ date: "18-19 Dec 21", tz: "IST" })}
+          ></input>
           <span className="text-md ml-2">
             18-19th Dec 2021 (8 am to 12 noon Indian Standard Time)
           </span>
@@ -53,7 +62,11 @@ function RegisterEmail(): JSX.Element {
         </div>
 
         <div>
-          <input type="radio"></input>
+          <input
+            type="radio"
+            name="batch"
+            onClick={() => setBatch({ date: "12-13 Feb 22", tz: "PST" })}
+          ></input>
           <span className="text-md ml-2">
             12-13th Feb 2022 (10 am to 2 pm Pacific Time)
           </span>
@@ -61,7 +74,11 @@ function RegisterEmail(): JSX.Element {
         </div>
 
         <div>
-          <input type="radio"></input>
+          <input
+            type="radio"
+            name="batch"
+            onClick={() => setBatch({ date: "12-13 Feb 22", tz: "IST" })}
+          ></input>
           <span className="text-md ml-2">
             12-13th Feb 2022 (8 am to 12 noon Indian Standard Time)
           </span>
@@ -69,7 +86,11 @@ function RegisterEmail(): JSX.Element {
         </div>
 
         <div>
-          <input type="radio"></input>
+          <input
+            type="radio"
+            name="batch"
+            onClick={() => setBatch({ date: "future", tz: "tbd" })}
+          ></input>
           <span className="text-md ml-2">
             Keep me posted for future workshops
           </span>
@@ -78,20 +99,15 @@ function RegisterEmail(): JSX.Element {
           <input
             type="email"
             name="email"
-            value={emailInput}
             placeholder="Email"
             className="w-64 rounded-md p-2"
+            onChange={(e) => setEmail(e.target.value)}
           />
-          <Link href={{ pathname: "/checkout", query: { emailInput } }}>
-            <button className="ml-2 mr-4">Enroll</button>
-          </Link>
+          <button onClick={enrollEmail} className="ml-2">
+            Enroll
+          </button>
         </div>
-        {(error && <h1 className="text-red-400">{error.message}</h1>) ||
-          (message && <h1 className="text-green-400">{message}</h1>) ||
-          (errors?.email && (
-            <h1 className="text-red-400">{errors.email.message}</h1>
-          ))}
-      </form>
+      </div>
     </div>
   );
 }

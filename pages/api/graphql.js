@@ -3,12 +3,9 @@ import axios from "axios";
 
 export default async (req, res) => {
   const url = process.env.GRAPHQL_SERVER;
-  const session = await (req, res);
 
   await axios
-    .post(url, req.body, {
-      headers: { Authorization: `Bearer ${session.accessToken}` },
-    })
+    .post(url, req.body)
     .then(({ data }) => {
       res.status(200).json({ ...data });
     })

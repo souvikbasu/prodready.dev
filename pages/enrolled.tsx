@@ -40,7 +40,7 @@ const Home: NextPage = () => {
               )
             ) : (
               <>
-                <h1>Umm! Something's not right!</h1>
+                <h1>Umm! Something&apos;s not right!</h1>
                 <div className="justify-center mt-20">
                   <p className="text-center">
                     {error ? error : "Please try to enrol again"}

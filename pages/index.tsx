@@ -57,7 +57,7 @@ const Home: NextPage = () => {
                   <li>Accessibility?</li>
                   <li>CI/CD pipeline?</li>
                   <li>Deployment strategies?</li>
-                  <li>Analyzing users' behavior on the site?</li>
+                  <li>Analyzing users&apos; behavior on the site?</li>
                   <li>Perform A/B testing?</li>
                   <li>Handle scale?</li>
                 </ul>

@@ -19,13 +19,13 @@ function ProfileSection(): JSX.Element {
           />
         </div>
         <p className="w-full ml-8">
-          Hi, I am Souvik Basu. I work as a Senior Software Engineer with
-          Microsoft (Vancouver) and contribute to many projects on the sides in
-          my free time. I am a JavaScript enthusiast and passionate about
-          Frontend technologies. I live in Vancouver in Canada and an active
-          member of various dev groups here. On the side, I also run Frontend
-          Social, a community-sourced platform for Frontend developers and
-          designers to track the latest trends in Frontend.
+          Hi, I am Souvik Basu. I work as a Senior Software Engineer at
+          Microsoft (Vancouver) and contribute to many open source projects on
+          the sides in my free time. I am a JavaScript enthusiast and passionate
+          about Frontend technologies. I live in Vancouver in Canada and am an
+          active member of various dev groups here. On the side, I also run
+          Frontend Social, a community-sourced platform for Frontend developers
+          and designers to track the latest trends in Frontend.
         </p>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import ProfileSection from "../components/ProfileSection";
 import RegisterEmail from "../components/RegisterEmail";
 
 const Home: NextPage = () => {
@@ -110,6 +111,7 @@ const Home: NextPage = () => {
                 count. Just let me know the details in mail.
               </p>
             </div>
+            <ProfileSection />
           </div>
         </main>
 

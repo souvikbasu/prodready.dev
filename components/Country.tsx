@@ -23,7 +23,7 @@ export default function Countries({ calculateGST, formData, setFormData }) {
           calculateGST(e);
         }}
       >
-        {data.map((country) => (
+        {data.data.map((country) => (
           <option className="text-black w-16 sm:w-32">{country.name}</option>
         ))}
       </select>

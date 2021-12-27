@@ -41,7 +41,7 @@ function RegisterEmail(): JSX.Element {
   };
 
   return (
-    <div className="max-w-lg md:max-w-2xl">
+    <div className="w-full md:max-w-2xl">
       <div className="w-full bg-graybg rounded p-5 sm:p-10 mt-20">
         <h2>Save my spot</h2>
         <div>
@@ -103,15 +103,15 @@ function RegisterEmail(): JSX.Element {
             Keep me posted for future workshops
           </span>
         </div>
-        <div className="flex flex-row mt-4">
+        <div className="flex flex-col sm:flex-row mt-4">
           <input
             type="email"
             name="email"
             placeholder="Email"
-            className="w-64 rounded-md p-2"
+            className="w-full sm:w-64 rounded-md p-2"
             onChange={(e) => setEmail(e.target.value)}
           />
-          <button onClick={enrollEmail} className="ml-2">
+          <button onClick={enrollEmail} className="mt-2 sm:mt-0 sm:ml-2">
             Enroll
           </button>
         </div>

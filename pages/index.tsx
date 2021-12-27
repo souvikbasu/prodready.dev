@@ -5,7 +5,7 @@ import RegisterEmail from "../components/RegisterEmail";
 
 const Home: NextPage = () => {
   return (
-    <div className="bg-darkbg h-auto w-full ">
+    <div className="bg-darkbg h-auto w-full">
       <div className="p-4">
         <Head>
           <title>React in Production</title>
@@ -33,8 +33,8 @@ const Home: NextPage = () => {
           />
         </Head>
 
-        <main className="min-h-screen p-4 flex flex-col justify-center items-center w-full">
-          <div className="max-w-lg md:max-w-2xl">
+        <main className="min-h-screen p-4 flex flex-col justify-center items-center">
+          <div className="w-full md:max-w-2xl">
             <h1>React in Production</h1>
             <h2 className="text-center">
               Take your React skills to the next level

@@ -7,10 +7,14 @@ import akashProfilePic from "../public/images/akash.jpg";
 import Link from "next/link";
 
 function ProfileSection(): JSX.Element {
+  const cardStyles = "flex flex-col md:flex-row";
+  const cardDescriptionStyles = "w-full md:ml-8";
+
   return (
     <div className="max-w-lg md:max-w-2xl">
       <h3 className="mt-16">About Us</h3>
-      <div className="flex">
+
+      <div className={cardStyles}>
         <div className="block w-48 h-48 pt-8">
           <Image
             src={profilePic}
@@ -20,7 +24,7 @@ function ProfileSection(): JSX.Element {
             className="rounded-full border-2 border-yellow"
           />
         </div>
-        <p className="w-full ml-8">
+        <p className={cardDescriptionStyles}>
           Hi, I am Souvik Basu. I work as a Senior Software Engineer at
           Microsoft (Vancouver) and contribute to many open source projects on
           the sides in my free time. I am a JavaScript enthusiast and passionate
@@ -31,7 +35,7 @@ function ProfileSection(): JSX.Element {
         </p>
       </div>
 
-      <div className="flex">
+      <div className={cardStyles}>
         <div className="block w-48 h-48 pt-8">
           <Image
             src={akashProfilePic}
@@ -41,7 +45,7 @@ function ProfileSection(): JSX.Element {
             className="rounded-full border-2 border-yellow"
           />
         </div>
-        <p className="w-full ml-8">
+        <p className={cardDescriptionStyles}>
           Hi, I am Akash Joshi. I work as a Platform Engineer at HASH.ai (NYC)
           and like to do community outreach in my free time. I am a Typescript
           and React enthusiast and passionate about solving complex problems

@@ -5,7 +5,7 @@ import RegisterEmail from "../components/RegisterEmail";
 
 const Home: NextPage = () => {
   return (
-    <div className="bg-darkbg h-auto w-max sm:w-full ">
+    <div className="bg-darkbg h-auto w-full ">
       <div className="p-4">
         <Head>
           <title>React in Production</title>

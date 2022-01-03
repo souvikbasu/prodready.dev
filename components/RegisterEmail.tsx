@@ -44,30 +44,6 @@ function RegisterEmail(): JSX.Element {
     <div className="max-w-lg md:max-w-2xl">
       <div className="w-full bg-graybg rounded p-5 sm:p-10 mt-20">
         <h2>Save my spot</h2>
-        <div>
-          <input
-            type="radio"
-            name="batch"
-            defaultChecked={true}
-            onClick={() => setBatch({ date: "18-19th Dec `21", tz: "PST" })}
-          ></input>
-          <span className="text-md ml-2">
-            18-19th Dec 2021 (10 am to 2 pm Pacific Time)
-          </span>
-          <div className="text-sm ml-6 mb-4 text-yellow">USD 39 | CAD 49</div>
-        </div>
-
-        <div>
-          <input
-            type="radio"
-            name="batch"
-            onClick={() => setBatch({ date: "18-19th Dec `21", tz: "IST" })}
-          ></input>
-          <span className="text-md ml-2">
-            18-19th Dec 2021 (8 am to 12 noon Indian Standard Time)
-          </span>
-          <div className="text-sm ml-6 mb-4 text-yellow">INR 2000</div>
-        </div>
 
         <div>
           <input
